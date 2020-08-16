@@ -12,33 +12,34 @@ def load_stopwords():
     """
     :return: a list of all stopwords stored in sample_stopwords_swiss_german.txt
     """
-    with open('sample_stopwords_swiss_german.txt', 'r') as f:
-        if f.mode == 'r':
-            contents = f.read()
-            res = contents.split('\n')
-            return res
+    with open('sample_stopwords_swiss_german.txt', 'r') as file:
+        if file.mode == 'r':
+            contents = file.read()
+            stopwords_list = contents.split('\n')
+            return stopwords_list
 
 
 def load_data(name: str):
     """
-    :param name: messages from name will be added to text
+    :param name: messages from name will be added to complete_message_text
     :return: returns a string containing all messages from name in chat.json
     """
-    with open(CHAT, 'r', encoding='utf-8') as f:
-        chat_dict = json.load(f)
-        cd = chat_dict['messages']
-        text = ''
-        for i in cd:
-            if i['type'] == 'message' and 'file' not in i and i['from'] == name:
-                t = ''
-                for elem in i['text']:
-                    if not 'type' in elem:
-                        t += elem
-                try:
-                    text += t
-                except TypeError:
-                    print(t)
-        return text
+    with open(CHAT, 'r', encoding='utf-8') as chat_file:
+        chat_dictionary = json.load(chat_file)
+        message_dictionary = chat_dictionary['messages']
+        complete_message_text = ''
+        for message in message_dictionary:
+            if message['from'] == name:
+                if message['type'] == 'message' and 'file' not in message:
+                    message_text = ''
+                    for word in message['text']:
+                        if 'type' not in word:
+                            message_text += word
+                    try:
+                        complete_message_text += message_text
+                    except TypeError:
+                        print(message_text)
+        return complete_message_text
 
 
 def gen_wordcloud(text: str, stopwords: list, name: str):

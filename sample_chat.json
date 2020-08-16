@@ -5,20 +5,6 @@
   "messages": [
     {
       "id": 1,
-      "type": "service",
-      "date": "2018-01-10T18:32:15",
-      "actor": "Hans Muster",
-      "actor_id": 123123123,
-      "action": "create_group",
-      "title": "Sample Group",
-      "members": [
-        "Hans Muster",
-        "Frieda Federkohl"
-      ],
-      "text": ""
-    },
-    {
-      "id": 2,
       "type": "message",
       "date": "2018-01-10T18:32:28",
       "from": "Hans Muster",
@@ -26,7 +12,7 @@
       "text": "Hello World"
     },
     {
-      "id": 3,
+      "id": 2,
       "type": "message",
       "date": "2018-01-10T18:32:29",
       "from": "Frieda Federkohl",
