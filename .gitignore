@@ -6,7 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# dirs
+CaDo/
+out/
+config2.ini
+
 chat.json
+chat2.json
 .idea/
 
 # Distribution / packaging
